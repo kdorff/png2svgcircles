@@ -34,7 +34,7 @@ import groovy.transform.AutoClone
  *   just make circles from maxSize to minSize.
  */
 
-@Command(name = 'svgCircles', mixinStandardHelpOptions = true, version = '0.1',
+@Command(name = 'png2svgcircles.groovy', mixinStandardHelpOptions = true, version = '0.1',
         description = 'Draws an SVG using random circles from a simple PNG')
 class png2svgcircles implements Callable<Integer> {
     @Option(names = ["-i", "--input"], required = true, description = "The input PNG file")

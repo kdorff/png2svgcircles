@@ -17,7 +17,7 @@ and then install compatible Java and Groovy packages.
 ## Usage (command line options)
 
 ```
-Usage: svgCircles 
+Usage: png2svgcircles.groovy 
     [-hV] [-d=<doubleOffset>] -i=<inputPngFile> [-m=<minSize>]
     [-n=<numCirclesPerSize>] -o=<outputSvgFile>
     [-r=<numRetriesPerCircle>] [-s=<spacing>] [-x=<maxSize>]
