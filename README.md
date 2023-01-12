@@ -22,11 +22,11 @@ and then install compatible Java and Groovy versions.
 groovy png2svgcircles.groovy -i 26-and-oval.png -o 26-and-oval.svg -s 5 -m 5 -x 30 -c -1
 ```
 
-**Input File**
-[red-star.png](...)
+**Sample input file 26-and-oval.png**
+[red-star.png](https://github.com/kdorff/png2svgcircles/blob/main/26-and-oval.png?raw=true)
 
-**Sample Output**
-[red-star.svg](...)
+**Example output file 26-and-oval.svg**
+[red-star.svg](https://github.com/kdorff/png2svgcircles/blob/main/26-and-oval.svg?raw=true)
 
 ## Example 2
 
@@ -34,8 +34,16 @@ groovy png2svgcircles.groovy -i 26-and-oval.png -o 26-and-oval.svg -s 5 -m 5 -x 
 groovy png2svgcircles.groovy -i red-star.png -o red-star.svg -s 2 -m 5 -x 30 -c 0
 ```
 
-**Input File**
-[x-red-star.png](...)
+**Sample input file red-star.png**
+[red-star.png](https://github.com/kdorff/png2svgcircles/blob/main/red-star.png?raw=true)
 
-**Sample Output**
-[x-red-star.svg](...)
+**Example output file red-star.svg**
+[red-star.svg](https://github.com/kdorff/png2svgcircles/blob/main/red-star.svg?raw=true)
+
+Another way, raw
+
+[red-star.svg](red-star.svg?raw=true)
+
+Another way, non raw
+
+[red-star.svg](red-star.svg)
