@@ -23,10 +23,10 @@ groovy png2svgcircles.groovy -i 26-and-oval.png -o 26-and-oval.svg -s 5 -m 5 -x 
 ```
 
 **Sample input file 26-and-oval.png**
-[red-star.png](https://github.com/kdorff/png2svgcircles/blob/main/26-and-oval.png?raw=true)
+![red-star.png](26-and-oval.png)
 
 **Example output file 26-and-oval.svg**
-[red-star.svg](https://github.com/kdorff/png2svgcircles/blob/main/26-and-oval.svg?raw=true)
+![red-star.svg](26-and-oval.svg)
 
 ## Example 2
 
@@ -35,15 +35,9 @@ groovy png2svgcircles.groovy -i red-star.png -o red-star.svg -s 2 -m 5 -x 30 -c 
 ```
 
 **Sample input file red-star.png**
-[red-star.png](https://github.com/kdorff/png2svgcircles/blob/main/red-star.png?raw=true)
+![red-star.png](red-star.png)
 
 **Example output file red-star.svg**
-[red-star.svg](https://github.com/kdorff/png2svgcircles/blob/main/red-star.svg?raw=true)
+![red-star.svg](red-star.svg)
 
 Another way, raw
-
-[red-star.svg](red-star.svg?raw=true)
-
-Another way, non raw
-
-[red-star.svg](red-star.svg)
