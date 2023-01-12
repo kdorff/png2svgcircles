@@ -19,27 +19,27 @@ and then install compatible Java and Groovy versions.
 ### Example 1
 
 ```bash
-groovy png2svgcircles.groovy -i 26-and-oval.png -o 26-and-oval.svg -s 5 -m 5 -x 30 -c -1
+groovy png2svgcircles.groovy -i images/26-and-oval.png -o images/26-and-oval.svg -s 5 -m 5 -x 30 -c -1
 ```
 
 **Sample input file 26-and-oval.png**
 
-![red-star.png](26-and-oval.png)
+![red-star.png](images/26-and-oval.png)
 
 **Example output file 26-and-oval.svg**
 
-![red-star.svg](26-and-oval.svg)
+![red-star.svg](images/26-and-oval.svg)
 
 ### Example 2
 
 ```bash
-groovy png2svgcircles.groovy -i red-star.png -o red-star.svg -s 2 -m 5 -x 30 -c 0
+groovy png2svgcircles.groovy -i images/red-star.png -o images/red-star.svg -s 2 -m 5 -x 30 -c 0
 ```
 
 **Sample input file red-star.png**
 
-![red-star.png](red-star.png)
+![red-star.png](images/red-star.png)
 
 **Example output file red-star.svg**
 
-![red-star.svg](red-star.svg)
+![red-star.svg](images/red-star.svg)
