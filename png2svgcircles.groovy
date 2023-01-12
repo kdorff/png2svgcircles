@@ -58,11 +58,14 @@ class png2svgcircles implements Callable<Integer> {
     @Option(names = ["-x", "--max-size"], description = "The maximum circle size - default is 50")
     int maxSize = 50
 
-    @Option(names = ["-d", "--double-circles-offset"], description = "Double the placed circles with each doubled circle having the radius reduced by this much.")
+    @Option(names = ["-d", "--double-circles-offset"], description = "Double the placed circles with each doubled circle having the radius reduced by this much")
     Double doubleOffset = null
 
-    @Option(names = ["-c", "--color-skip"], description = "Colors (argb values) to be omitted. Can be included multiple times to omit multiple colors.")
+    @Option(names = ["-c", "--color-skip"], description = "Colors (argb values) to be omitted. Can be included multiple times to omit multiple colors")
     List<Integer> omitColors = []
+
+    @Option(names = ["-t", "--color-tolerance"], description = "Acceptable tolerance of color in percentage - default is 0")
+    Double tolerance = 0
 
     Random random = new Random()
 
@@ -135,9 +138,29 @@ class png2svgcircles implements Callable<Integer> {
         }
     }
 
+
+    double colorsPercentageDifference(int argb1, int argb2) {
+        Map color1Map = splitArgb(argb1)
+        Map color2Map = splitArgb(argb2)
+
+        double distance = Math.sqrt(
+            (color2Map.red - color1Map.red)^2 +
+            (color2Map.green - color1Map.green)^2 +
+            (color2Map.blue - color1Map.blue)^2)
+        double percentage = distance / Math.sqrt((255)^2+(255)^2+(255)^2)
+        return percentage
+    }
+
     boolean isFilledWith(int x, int y, int color) {
         int pixelColorArgb = inputPixels[(canvasWidth * y) + x]
-        return color == pixelColorArgb
+        if (tolerance == 0.0d) {
+            return color == pixelColorArgb
+        }
+        else {
+            Double perDiff = colorsPercentageDifference(color, pixelColorArgb)
+            // println "perDiff=${perDiff}"
+            return perDiff < tolerance
+        }
     }
 
     boolean isCircleInside(int x, int y, int r, int color) {
