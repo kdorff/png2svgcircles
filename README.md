@@ -80,3 +80,19 @@ groovy png2svgcircles.groovy -i images/red-star.png -o images/red-star.svg -s 2 
 **Example output file red-star.svg**
 
 ![red-star.svg](images/red-star.svg)
+
+### Example 3
+
+Here we use the tolerance option, `-t`, to better handle images that have less uniform coloring.
+
+```bash
+groovy png2svgcircles.groovy -i images/Chicken_New01.png -o images/Chicken_New01.svg -s 1 -m 2 -x 20 -t 0.5
+```
+
+**Sample input file Chicken_New01.png**
+
+![Chicken_New01.png](images/Chicken_New01.png)
+
+**Example output file Chicken_New01.svg**
+
+![Chicken_New01.svg](images/Chicken_New01.svg)
