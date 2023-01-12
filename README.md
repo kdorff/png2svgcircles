@@ -42,6 +42,8 @@ Draws an SVG using random circles from a simple PNG
   -c, --color-skip=<omitColors>
         Colors (argb values) to be omitted. Can be
         included multiple times to omit multiple colors.
+  -t, --color-tolerance
+        Color tolerance for color matching, in percentage. Range is 0.0 (any color will match) to 1.0 (exact color match required). The alpha channel is ignored. Default is 1.0
   -d, --double-circles-offset=<doubleOffset>
         Double the placed circles with each doubled circle
         having the radius reduced by this much.

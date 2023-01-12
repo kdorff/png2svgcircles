@@ -64,8 +64,8 @@ class png2svgcircles implements Callable<Integer> {
     @Option(names = ["-c", "--color-skip"], description = "Colors (argb values) to be omitted. Can be included multiple times to omit multiple colors")
     List<Integer> omitColors = []
 
-    @Option(names = ["-t", "--color-tolerance"], description = "Acceptable tolerance of color in percentage - default is 0")
-    Double tolerance = 0
+    @Option(names = ["-t", "--color-tolerance"], description = "Color tolerance for color matching, in percentage. Range is 0.0 (any color will match) to 1.0 (exact color match required). The alpha channel is ignored. Default is 1.0")
+    Double tolerance = 1.0d
 
     Random random = new Random()
 
@@ -143,6 +143,7 @@ class png2svgcircles implements Callable<Integer> {
         Map color1Map = splitArgb(argb1)
         Map color2Map = splitArgb(argb2)
 
+        // TODO: Should we take the alpha channel into account? We don't.
         double distance = Math.sqrt(
             (color2Map.red - color1Map.red)^2 +
             (color2Map.green - color1Map.green)^2 +
@@ -153,12 +154,16 @@ class png2svgcircles implements Callable<Integer> {
 
     boolean isFilledWith(int x, int y, int color) {
         int pixelColorArgb = inputPixels[(canvasWidth * y) + x]
-        if (tolerance == 0.0d) {
+        if (tolerance == 1.0d) {
+            // 100% match required. Only match the same color.
             return color == pixelColorArgb
+        }
+        else if (tolerance == 0.0d) {
+            // Always match. Weird, but OK.
+            return true
         }
         else {
             Double perDiff = colorsPercentageDifference(color, pixelColorArgb)
-            // println "perDiff=${perDiff}"
             return perDiff < tolerance
         }
     }
