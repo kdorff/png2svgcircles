@@ -14,6 +14,43 @@ and then install compatible Java and Groovy packages.
 * java 11.0.2-open
 * groovy 3.0.14
 
+## Usage (command line options)
+
+```
+Usage: svgCircles 
+    [-hV] [-d=<doubleOffset>] -i=<inputPngFile> [-m=<minSize>]
+    [-n=<numCirclesPerSize>] -o=<outputSvgFile>
+    [-r=<numRetriesPerCircle>] [-s=<spacing>] [-x=<maxSize>]
+    [-c=<omitColors>]...
+Draws an SVG using random circles from a simple PNG
+  -i, --input=<inputPngFile>
+        The input PNG file
+  -o, --output=<outputSvgFile>
+        The output SVG file
+  -m, --min-size=<minSize>
+        The minimum circle size - default is 10
+  -x, --max-size=<maxSize>
+        The maximum circle size - default is 50
+  -s, --spacing=<spacing>
+        Minimum space between circles - default is 10
+  -n, --num-circles=<numCirclesPerSize>
+        Number of circles of each size to try to place -
+        default is 100
+  -r, --retries=<numRetriesPerCircle>
+        Number of retries for placing each circle -
+        default is 1000
+  -c, --color-skip=<omitColors>
+        Colors (argb values) to be omitted. Can be
+        included multiple times to omit multiple colors.
+  -d, --double-circles-offset=<doubleOffset>
+        Double the placed circles with each doubled circle
+        having the radius reduced by this much.
+  -V, --version
+        Print version information and exit.
+  -h, --help
+        Show this help message and exit.
+```
+
 ## Examples
 
 ### Example 1

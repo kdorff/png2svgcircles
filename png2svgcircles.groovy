@@ -61,7 +61,7 @@ class png2svgcircles implements Callable<Integer> {
     @Option(names = ["-d", "--double-circles-offset"], description = "Double the placed circles with each doubled circle having the radius reduced by this much.")
     Double doubleOffset = null
 
-    @Option(names = ["-c", "--color-skip"], description = "Colors (argb values) to be omitted.")
+    @Option(names = ["-c", "--color-skip"], description = "Colors (argb values) to be omitted. Can be included multiple times to omit multiple colors.")
     List<Integer> omitColors = []
 
     Random random = new Random()
