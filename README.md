@@ -5,12 +5,12 @@ solidly filled areas will be filled with randomly sized
 circles of the same color.
 
 This code started its life as [Javascript gist](https://gist.github.com/gouldingken/8d0b7a05b0b0156da3b8) provided by
-[gouldingken](https://gist.github.com/gouldingken/8d0b7a05b0b0156da3b8). 
+[gouldingken](https://gist.github.com/gouldingken). 
 
 ## Requirements for running
 
 The easiest way to run this is to install [sdkman](https://sdkman.io/)
-and then install compatible Java and Groovy versions.
+and then install compatible Java and Groovy packages.
 * java 11.0.2-open
 * groovy 3.0.14
 
