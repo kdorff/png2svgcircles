@@ -31,7 +31,7 @@ import groovy.transform.AutoClone
  * * Option -c to omit making circles with specific argb color values
  *   This can be added multiple times to omit multiple colors.
  * * Simplified code to not need to 'makeCircles' before placing them,
- *   just make circles from maxSize to minSize.
+ *   just make circles from minRadius to maxRadius.
  */
 
 @Command(name = 'png2svgcircles.groovy', mixinStandardHelpOptions = true, version = '0.1',
@@ -49,14 +49,17 @@ class png2svgcircles implements Callable<Integer> {
     @Option(names = ["-n", "--num-circles"], description = "Number of circles of each size to try to place - default is 100")
     int numCirclesPerSize = 100
 
+    @Option(names = ["--radius-decrement"], description = "Amount to decrease circle radius by in iterations - default is 1")
+    int radiusDecrement = 1
+
     @Option(names = ["-r", "--retries"], description = "Number of retries for placing each circle - default is 1000")
     int numRetriesPerCircle = 1000
 
-    @Option(names = ["-m", "--min-size"], description = "The minimum circle size - default is 10")
-    int minSize = 10
+    @Option(names = ["-m", "--min-radius"], description = "The minimum circle radius - default is 10")
+    int maxRadius = 10
 
-    @Option(names = ["-x", "--max-size"], description = "The maximum circle size - default is 50")
-    int maxSize = 50
+    @Option(names = ["-x", "--max-radius"], description = "The maximum circle radius - default is 50")
+    int minRadius = 50
 
     @Option(names = ["-d", "--double-circles-offset"], description = "Double the placed circles with each doubled circle having the radius reduced by this much")
     Double doubleOffset = null
@@ -196,7 +199,7 @@ class png2svgcircles implements Callable<Integer> {
 
     void placeCircles() {
         placedCircles.clear()
-        for (int currRadius = maxSize; currRadius >= minSize; currRadius--) {
+        for (int currRadius = minRadius; currRadius >= maxRadius; currRadius -= radiusDecrement) {
             for (int numAtSize = 0; numAtSize < numCirclesPerSize; numAtSize++) {
                 int numRetries = numRetriesPerCircle
                 boolean circlePlaced = false
