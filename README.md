@@ -65,10 +65,10 @@ Draws an SVG using random circles from a simple PNG
 
 ### Example 1
 
-Two color PNG with a transparent background at relatively low resolution.
+Two color PNG with a transparent background at relatively low resolution. It includes circle doubling to provide tolerace for 3d printing designs, etc.
 
 ```bash
-groovy png2svgcircles.groovy -i images/26-and-oval.png -o images/26-and-oval.svg -s 5 -m 5 -x 30 -c -1
+groovy png2svgcircles.groovy -i images/26-and-oval.png -o images/26-and-oval.svg -s 5 -m 8 -x 30 -c -1 -d 1
 ```
 
 **Sample input file 26-and-oval.png**
