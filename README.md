@@ -108,20 +108,3 @@ groovy png2svgcircles.groovy -i images/Chicken_New01.png -o images/Chicken_New01
 **Example output file Chicken_New01.svg**
 
 ![images/Chicken_New01.svg](images/Chicken_New01.svg)
-
-### Example 4
-
-This is a higher resolution version of 26-and-oval. I've included the Affinity Designer source file. It includes circle doubling to provide tolerace for 3d printing designs, etc.
-
-```bash
-groovy png2svgcircles.groovy -i images/26-and-oval-large.png -o images/26-and-oval-large.svg -s 10 -m 20 -x 120 -c -1 -d 1 --radius-decrement 5
-```
-
-**Sample input file 26-and-oval-large.png**
-
-![images/26-and-oval-large.png](images/26-and-oval-large.png)
-
-**Example output file 26-and-oval-large.svg**
-
-![images/26-and-oval-large.svg](images/26-and-oval-large.svg)
-
