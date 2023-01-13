@@ -88,7 +88,7 @@ groovy png2svgcircles.groovy -i images/red-star.png -o images/red-star.svg -s 2 
 
 ### Example 3
 
-And an example for [ResinChem Tech](https://www.youtube.com/@ResinChemTech) where we use the tolerance option, `-t`, to better handle images that have less non-uniform coloring.
+And an example for [ResinChem Tech](https://www.youtube.com/@ResinChemTech) where we use the tolerance option, `-t`, to better handle images that have non-uniform coloring.
 
 ```bash
 groovy png2svgcircles.groovy -i images/Chicken_New01.png -o images/Chicken_New01.svg -s 1 -m 2 -x 20 -t 0.5
