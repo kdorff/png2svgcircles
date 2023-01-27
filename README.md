@@ -19,9 +19,8 @@ and then install compatible Java and Groovy packages.
 ```
 Usage: png2svgcircles.groovy 
       [-hV] [-d=<doubleOffset>] -i=<inputPngFile>
-      [-m=<maxRadius>] [-n=<numCirclesPerSize>]
+      [-m=<maxRadius>] [-n=<numCircles>]
       -o=<outputSvgFile> [-r=<numRetriesPerCircle>]
-      [--radius-decrement=<radiusDecrement>]
       [-s=<spacing>] [-t=<tolerance>] [-x=<minRadius>]
       [-c=<omitColors>]...
 Draws an SVG using random circles from a simple PNG
@@ -35,19 +34,15 @@ Draws an SVG using random circles from a simple PNG
       Show this help message and exit.
   -i, --input=<inputPngFile>
       The input PNG file
-  -m, --min-radius=<maxRadius>
+  -m, --min-radius=<minRadius>
       The minimum circle radius - default is 10
-  -n, --num-circles=<numCirclesPerSize>
-      Number of circles of each size to try to place -
-      default is 100
+  -n, --num-circles=<numCircles>
+      Number of circles to try to place - default is 500
   -o, --output=<outputSvgFile>
       The output SVG file
   -r, --retries=<numRetriesPerCircle>
       Number of retries for placing each circle - default
       is 1000
-  --radius-decrement=<radiusDecrement>
-      Amount to decrease circle radius by in iterations -
-      default is 1
   -s, --spacing=<spacing>
       Minimum space between circles - default is 10
   -t, --color-tolerance=<tolerance>
@@ -57,7 +52,7 @@ Draws an SVG using random circles from a simple PNG
       ignored. Default is 1.0
   -V, --version
       Print version information and exit.
-  -x, --max-radius=<minRadius>
+  -x, --max-radius=<maxRadius>
       The maximum circle radius - default is 50
 ```
 

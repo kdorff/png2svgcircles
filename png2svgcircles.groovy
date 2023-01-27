@@ -46,20 +46,17 @@ class png2svgcircles implements Callable<Integer> {
     @Option(names = ["-s", "--spacing"], description = "Minimum space between circles - default is 10")
     int spacing = 10
 
-    @Option(names = ["-n", "--num-circles"], description = "Number of circles of each size to try to place - default is 100")
-    int numCirclesPerSize = 100
-
-    @Option(names = ["--radius-decrement"], description = "Amount to decrease circle radius by in iterations - default is 1")
-    int radiusDecrement = 1
+    @Option(names = ["-n", "--num-circles"], description = "Number of circles to try to place - default is 500")
+    int numCircles = 500
 
     @Option(names = ["-r", "--retries"], description = "Number of retries for placing each circle - default is 1000")
     int numRetriesPerCircle = 1000
 
     @Option(names = ["-m", "--min-radius"], description = "The minimum circle radius - default is 10")
-    int maxRadius = 10
+    int minRadius = 10
 
     @Option(names = ["-x", "--max-radius"], description = "The maximum circle radius - default is 50")
-    int minRadius = 50
+    int maxRadius = 50
 
     @Option(names = ["-d", "--double-circles-offset"], description = "Double the placed circles with each doubled circle having the radius reduced by this much")
     Double doubleOffset = null
@@ -197,38 +194,38 @@ class png2svgcircles implements Callable<Integer> {
         return true
     }
 
+    public int getRandomInRange(int minInclusive, int maxExclusive) {
+        int maxInclusive = maxExclusive + 1;
+        return (int) ((Math.random() * (maxInclusive - minInclusive)) + minInclusive);
+    }
+
     void placeCircles() {
         placedCircles.clear()
-        for (int currRadius = minRadius; currRadius >= maxRadius; currRadius -= radiusDecrement) {
-            for (int numAtSize = 0; numAtSize < numCirclesPerSize; numAtSize++) {
-                int numRetries = numRetriesPerCircle
-                boolean circlePlaced = false
-                while (!circlePlaced && numRetries-- > 0) {
-                    int x = random.nextDouble() * canvasWidth
-                    int y = random.nextDouble() * canvasHeight
-                    int color = inputPixels[(canvasWidth * y) + x]
-                    if (!omitColors.contains(color) && isCircleInside(x, y, currRadius, color)) {
-                        if (!touchesPlacedCircle(x, y, currRadius)) {
-                            circlePlaced = true
-                            FillCircle placedCircle = new FillCircle(currRadius)
-                            placedCircle.x = x
-                            placedCircle.y = y
-                            placedCircle.color = color
-                            placedCircles << placedCircle
+        for (int numTried = 0; numTried < numCircles; numTried++) {
+            int numRetries = numRetriesPerCircle
+            boolean circlePlaced = false
+            int currRadius = getRandomInRange(minRadius, maxRadius)
+            while (!circlePlaced && numRetries-- > 0) {
+                int x = random.nextDouble() * canvasWidth
+                int y = random.nextDouble() * canvasHeight
+                int color = inputPixels[(canvasWidth * y) + x]
+                if (!omitColors.contains(color) && isCircleInside(x, y, currRadius, color)) {
+                    if (!touchesPlacedCircle(x, y, currRadius)) {
+                        circlePlaced = true
+                        FillCircle placedCircle = new FillCircle(currRadius)
+                        placedCircle.x = x
+                        placedCircle.y = y
+                        placedCircle.color = color
+                        placedCircles << placedCircle
 
-                            if (doubleOffset != null) {
-                                def offsetCircle = placedCircle.clone()
-                                offsetCircle.r -= doubleOffset
-                                placedCircles << offsetCircle
-                            }
-
-                            print "."
-                            break
+                        if (doubleOffset != null) {
+                            def offsetCircle = placedCircle.clone()
+                            offsetCircle.r -= doubleOffset
+                            placedCircles << offsetCircle
                         }
+
+                        print "[$currRadius]"
                     }
-                }
-                if (!circlePlaced) {
-                    print("-[${currRadius}]")
                 }
             }
         }
