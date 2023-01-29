@@ -44,10 +44,10 @@ class png2svgcircles implements Callable<Integer> {
     File outputSvgFile
 
     @Option(names = ["-s", "--spacing"], description = "Minimum space between circles - default is 10")
-    int spacing = 10
+    int spacing = 5
 
-    @Option(names = ["-n", "--num-circles"], description = "Number of circles to try to place - default is 500")
-    int numCircles = 500
+    @Option(names = ["-n", "--num-circles"], description = "Number of circles to try to place - default is 2000")
+    int numCircles = 2000
 
     @Option(names = ["-r", "--retries"], description = "Number of retries for placing each circle - default is 1000")
     int numRetriesPerCircle = 1000

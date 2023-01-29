@@ -37,14 +37,14 @@ Draws an SVG using random circles from a simple PNG
   -m, --min-radius=<minRadius>
       The minimum circle radius - default is 10
   -n, --num-circles=<numCircles>
-      Number of circles to try to place - default is 500
+      Number of circles to try to place - default is 2000
   -o, --output=<outputSvgFile>
       The output SVG file
   -r, --retries=<numRetriesPerCircle>
       Number of retries for placing each circle - default
       is 1000
   -s, --spacing=<spacing>
-      Minimum space between circles - default is 10
+      Minimum space between circles - default is 5
   -t, --color-tolerance=<tolerance>
       Color tolerance for color matching, in percentage.
       Range is 0.0 (any color will match) to 1.0 (exact
@@ -63,7 +63,7 @@ Draws an SVG using random circles from a simple PNG
 Two color PNG with a transparent background at relatively low resolution. It includes circle doubling to provide tolerace for 3d printing designs, etc.
 
 ```bash
-groovy png2svgcircles.groovy -i images/26-and-oval.png -o images/26-and-oval.svg -s 5 -m 8 -x 30 -c -1 -d 1
+groovy png2svgcircles.groovy -i images/26-and-oval.png -o images/26-and-oval.svg -s 5 -m 10 -x 40 -c -1 -d 1
 ```
 
 **Sample input file 26-and-oval.png**
